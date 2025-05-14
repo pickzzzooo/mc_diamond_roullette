@@ -1,0 +1,65 @@
+command /다이아룰렛:
+	trigger:
+		set {다이아룰렛펄스} to true
+		delete player's sidebar
+		set {플레이어} to player
+		set {남은다이아::%player's uuid%} to 10
+		set {얻은다이아::%player's uuid%} to 0
+		set {진행시간::%player's uuid%} to 0
+		send "&5[다이아룰렛]&f다이아 켠왕 룰렛을 시작합니다!" to player
+		roulletteScoreboard(player)
+
+command /다이아조정 [<text>] [<number>]:
+	executable by: console, op
+	trigger:
+		if arg-1 is not set:
+			broadcast "&c[다이아룰렛] /다이아조정 (추가/감소/수정) (개수)"
+		else if arg-2 is not set:
+			broadcast "&c[다이아룰렛] /다이아조정 (추가/감소/수정) (개수)"
+		else:
+			if arg-1 is "추가":
+				add arg-2 to {남은다이아::%player's uuid%}
+			else if arg-1 is "감소":
+				remove arg-2 from {남은다이아::%player's uuid%}
+			else if arg-1 is "수정":
+				set {남은다이아::%player's uuid%} to arg-2
+			else:
+				broadcast "&c[다이아룰렛] /다이아조정 (추가/감소/수정) (개수)"
+			
+			if {남은다이아::%player's uuid%} <= {얻은다이아::%player's uuid%}:
+				winEvt({플레이어})
+every 1 seconds:
+	loop all players:
+		if {다이아룰렛펄스} is true:
+			if {남은다이아::%loop-player's uuid%} is set:
+				add 1 to {진행시간::%loop-player's uuid%}
+				wipe loop-player's sidebar
+				roulletteScoreboard(loop-player)
+
+
+function roulletteScoreboard(p: player):	
+	set name of sidebar of {_p} to "&b다이아 룰렛"
+	set score "룰렛은 투네이션으로!" in sidebar of {_p} to 3
+
+	set {_uuid} to {_p}'s uuid
+	set score "얻은/남은 다이아 : &b%{얻은다이아::%{_uuid}%}% &f/ &3%{남은다이아::%{_uuid}%}%" in sidebar of {_p} to 2
+
+	set {_time} to 시간_변환({진행시간::%{_uuid}%})
+	set score "진행시간 : %{_time}%" in sidebar of {_p} to 1
+
+function 시간_변환(초: number) :: text:
+	set {_시간} to floor({_초} / 3600)
+	set {_분} to floor(({_초} - {_시간} * 3600) / 60)
+	set {_초} to {_초} - {_시간} * 3600 - {_분} * 60
+
+	# 시간, 분, 초가 10보다 작으면 0을 추가하여 2자리로 맞춤
+	if {_시간} < 10:
+		set {_시간} to "0%{_시간}%"
+	if {_분} < 10:
+		set {_분} to "0%{_분}%"
+	if {_초} < 10:
+		set {_초} to "0%{_초}%"
+
+	set {_timer} to "%{_시간}%:%{_분}%:%{_초}%"
+	return {_timer}
+

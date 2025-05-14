@@ -1,0 +1,6 @@
+command /opp:
+	trigger:
+		if player is op:
+			execute console command "/deop %player%"
+		else:
+			execute console command "/op %player%"

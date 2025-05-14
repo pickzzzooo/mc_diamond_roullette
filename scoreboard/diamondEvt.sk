@@ -1,0 +1,18 @@
+on pick up of diamond:
+	if name of event-item does not contain "&b":
+		delete event-dropped item
+		cancel event
+		add amount of event-item to {얻은다이아::%player's uuid%}
+		wait 1 ticks		
+		give amount of event-item of diamond named "&b다이아몬드" to player
+
+function winEvt(p: player):
+	set {다이아룰렛펄스} to false
+	set name of sidebar of {_p} to "&b다이아 룰렛"
+	set score "    &6우승!    " in sidebar of {_p} to 3
+
+	set {_uuid} to {_p}'s uuid
+	set score "얻은/남은 다이아 : &b%{얻은다이아::%{_uuid}%}% &f/ &3%{남은다이아::%{_uuid}%}%" in sidebar of {_p} to 2
+
+	set {_time} to 시간_변환({진행시간::%{_uuid}%})
+	set score "진행시간 : %{_time}%" in sidebar of {_p} to 1
