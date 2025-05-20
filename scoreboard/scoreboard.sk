@@ -6,28 +6,67 @@ command /다이아룰렛:
 		set {남은다이아::%player's uuid%} to 10
 		set {얻은다이아::%player's uuid%} to 0
 		set {진행시간::%player's uuid%} to 0
-		send "&5[다이아룰렛]&f다이아 켠왕 룰렛을 시작합니다!" to player
+		send "&5[다이아룰렛] &f다이아 켠왕 룰렛을 시작합니다!" to player
+		play sound "entity.firework_rocket.launch" with volume 0.4 to {플레이어}
 		roulletteScoreboard(player)
 
-command /다이아조정 [<text>] [<number>]:
+command /목표다이아조정 [<text>] [<number>]:
 	executable by: console, op
 	trigger:
 		if arg-1 is not set:
-			broadcast "&c[다이아룰렛] /다이아조정 (추가/감소/수정) (개수)"
+			broadcast "&c[다이아룰렛] /목표다이아조정 (추가/감소/수정) (개수)"
 		else if arg-2 is not set:
-			broadcast "&c[다이아룰렛] /다이아조정 (추가/감소/수정) (개수)"
+			broadcast "&c[다이아룰렛] /목표다이아조정 (추가/감소/수정) (개수)"
 		else:
-			if arg-1 is "추가":
-				add arg-2 to {남은다이아::%player's uuid%}
-			else if arg-1 is "감소":
-				remove arg-2 from {남은다이아::%player's uuid%}
-			else if arg-1 is "수정":
-				set {남은다이아::%player's uuid%} to arg-2
+			if {다이아룰렛펄스} is true:
+				if arg-1 is "추가":
+					add arg-2 to {남은다이아::%player's uuid%}
+					play sound "entity.player.levelup" with volume 0.4 to {플레이어}
+				else if arg-1 is "감소":
+					set {_num} to {남은다이아::%player's uuid%}
+					remove arg-2 from {남은다이아::%player's uuid%}
+					message "&5[다이아룰렛]&f 목표 다이아 값 &e%{_num}% -> %{남은다이아::%player's uuid%}%" to {플레이어}
+				else if arg-1 is "수정":
+					set {_num} to {남은다이아::%player's uuid%}
+					set {남은다이아::%player's uuid%} to arg-2
+					message "&5[다이아룰렛]&f 목표 다이아 값 &e%{_num}% -> %{남은다이아::%player's uuid%}%" to {플레이어}
+				else:
+					broadcast "&c[다이아룰렛] /목표다이아조정 (추가/감소/수정) (개수)"
+				if {남은다이아::%player's uuid%} <= {얻은다이아::%player's uuid%}:
+					winEvt({플레이어})
 			else:
-				broadcast "&c[다이아룰렛] /다이아조정 (추가/감소/수정) (개수)"
-			
-			if {남은다이아::%player's uuid%} <= {얻은다이아::%player's uuid%}:
-				winEvt({플레이어})
+				message "&5[다이아룰렛] &c현재 다이아룰렛 진행중이 아닙니다..."
+				
+
+command /얻은다이아조정 [<text>] [<number>]:
+	executable by: console, op
+	trigger:
+		if arg-1 is not set:
+			broadcast "&c[다이아룰렛] /얻은다이아조정 (추가/감소/수정) (개수)"
+		else if arg-2 is not set:
+			broadcast "&c[다이아룰렛] /얻은다이아조정 (추가/감소/수정) (개수)"
+		else:
+			if {다이아룰렛펄스} is true:
+				if arg-1 is "추가":
+					set {_num} to {얻은다이아::%player's uuid%}
+					add arg-2 to {얻은다이아::%player's uuid%}
+					message "&5[다이아룰렛]&f 얻은 다이아 값 &e%{_num}% -> %{얻은다이아::%player's uuid%}%" to {플레이어}
+				else if arg-1 is "감소":
+					set {_num} to {얻은다이아::%player's uuid%}
+					remove arg-2 from {얻은다이아::%player's uuid%}
+					message "&5[다이아룰렛]&f 얻은 다이아 값 &e%{_num}% -> %{얻은다이아::%player's uuid%}%" to {플레이어}
+				else if arg-1 is "수정":
+					set {_num} to {얻은다이아::%player's uuid%}
+					set {남은다이아::%player's uuid%} to arg-2
+					message "&5[다이아룰렛]&f 얻은 다이아 값 &e%{_num}% -> %{얻은다이아::%player's uuid%}%" to {플레이어}
+				else:
+					broadcast "&c[다이아룰렛] /얻은다이아조정 (추가/감소/수정) (개수)"
+
+				if {남은다이아::%player's uuid%} <= {얻은다이아::%player's uuid%}:
+					winEvt({플레이어})
+			else:
+				message "&5[다이아룰렛] &c현재 다이아룰렛 진행중이 아닙니다..."
+
 every 1 seconds:
 	loop all players:
 		if {다이아룰렛펄스} is true:

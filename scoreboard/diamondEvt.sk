@@ -1,13 +1,17 @@
 on pick up of diamond:
 	if name of event-item does not contain "&b":
-		delete event-dropped item
-		cancel event
-		add amount of event-item to {얻은다이아::%player's uuid%}
-		wait 1 ticks		
-		give amount of event-item of diamond named "&b다이아몬드" to player
+		if {다이아룰렛펄스} is true:
+			delete event-dropped item
+			cancel event
+			add amount of event-item to {얻은다이아::%player's uuid%}
+			wait 1 ticks		
+			give amount of event-item of diamond named "&b다이아몬드" to player
+			if {남은다이아::%player's uuid%} <= {얻은다이아::%player's uuid%}:
+				winEvt({플레이어})
 
 function winEvt(p: player):
 	set {다이아룰렛펄스} to false
+	wipe {_p}'s sidebar
 	set name of sidebar of {_p} to "&b다이아 룰렛"
 	set score "    &6우승!    " in sidebar of {_p} to 3
 
@@ -15,4 +19,16 @@ function winEvt(p: player):
 	set score "얻은/남은 다이아 : &b%{얻은다이아::%{_uuid}%}% &f/ &3%{남은다이아::%{_uuid}%}%" in sidebar of {_p} to 2
 
 	set {_time} to 시간_변환({진행시간::%{_uuid}%})
+
 	set score "진행시간 : %{_time}%" in sidebar of {_p} to 1
+
+	play sound "music_disc.otherside" with volume 1 to {_p}
+	play sound "entity.player.levelup" with volume 0.5 to {_p}
+	send title "&6다이아를 모두 캐냈습니다!!!" with subtitle "다이아 &b%{얻은다이아::%{_uuid}%}% &f개를 캤습니다" to {_p} for 5 seconds
+	wait 1 tick
+	loop 8 times:
+		play sound "entity.firework_rocket.launch" with volume 0.5 to {_p}
+		wait 4 tick
+	loop 8 times:
+		play sound "entity.firework_rocket.large_blast" with volume 0.5 to {_p}
+		wait 4 tick
