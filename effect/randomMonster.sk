@@ -1,0 +1,111 @@
+command /몬스터 [<text>] [<text>]:
+	trigger:
+		if {몬스터리스트::*} is not set:
+			setMonsterList()
+
+		if arg-1 is not set:
+			message "&5[다이아룰렛] &f랜덤 몬스터 소환 목록"
+			loop indices of {몬스터리스트::*}:
+				set {_key} to loop-value
+				set {_value} to {몬스터리스트::%{_key}%}
+				if {_value} is true:
+					message "&a%{_key}% - %{_value}%"
+				else if {_value} is false:
+					message "&c%{_key}% - %{_value}%"
+		else if arg-1 is "수정":
+			if arg-2 is not set:
+				message "&c[다이아룰렛] &c/몬스터 수정 (몬스터)"
+			else:
+				loop indices of {몬스터리스트::*}:
+					if arg-2 is loop-value:
+						set {_pulse} to true
+						set {_key} to loop-value
+						set {_value} to {몬스터리스트::%{_key}%}
+						if {_value} is true:
+							set {몬스터리스트::%{_key}%} to false
+							message "&5[다이아룰렛] &a%{_key}% -> &c%{_key}%"
+						else if {_value} is false:
+							set {몬스터리스트::%{_key}%} to true
+							message "&5[다이아룰렛] &c%{_key}% -> &a%{_key}%"
+				if {_pulse} is not set:
+					message "&c[다이아룰렛] 유효하지 않은 몬스터. /몬스터 입력해서 리스트를 확인해주세요."
+
+		else if arg-1 is "소환":
+			if arg-2 is not set:
+				message "&c[다이아룰렛] &c/몬스터 소환 (몬스터)"
+			else:
+				loop indices of {몬스터리스트::*}:
+					if arg-2 is loop-value:
+						set {_pulse} to true
+						pickMonster(loop-value)
+				if {_pulse} is not set:
+					message "&c[다이아룰렛] 유효하지 않은 몬스터. /몬스터 입력해서 리스트를 확인해주세요."
+		else if arg-1 is "랜덤":
+			set {_가능한몬스터::*} to indices of {몬스터리스트::*}
+			loop {_가능한몬스터::*}:
+				if {몬스터리스트::%loop-value%} is not true:
+					remove loop-value from {_가능한몬스터::*}
+
+			if size of {_가능한몬스터::*} > 0:
+				set {_선택된몬스터} to random element out of {_가능한몬스터::*}
+				pickMonster({_선택된몬스터})
+		else:
+			message "&c[다이아룰렛] &c/몬스터 (랜덤/소환/수정) (값)"
+
+function pickMonster(name: text):
+	if {_name} is "알레이":
+		spawn allay at location of {플레이어}
+	else if {_name} is "블레이즈":
+		spawn blaze at location of {플레이어}
+	else if {_name} is "동굴 거미":
+		spawn cave spider at location of {플레이어}
+	else if {_name} is "거미":
+		spawn spider at location of {플레이어}
+	else if {_name} is "크리퍼":
+		spawn creeper at location of {플레이어}
+	else if {_name} is "좀비":
+		spawn zombie at location of {플레이어}
+	else if {_name} is "허스크":
+		spawn husk at location of {플레이어}
+	else if {_name} is "드라운드":
+		spawn drowned at location of {플레이어}
+	else if {_name} is "엔더맨":
+		spawn enderman at location of {플레이어}
+	else if {_name} is "철골렘":
+		spawn iron golem at location of {플레이어}
+	else if {_name} is "팬텀":
+		spawn phantom at location of {플레이어}
+	else if {_name} is "좀벌레":
+		spawn silverfish at location of {플레이어}
+	else if {_name} is "스켈레톤":
+		spawn skeleton at location of {플레이어}
+	else if {_name} is "슬라임":
+		spawn slime at location of {플레이어}
+	else if {_name} is "눈골렘":
+		spawn snow golem at location of {플레이어}
+	else if {_name} is "주민":
+		spawn villager at location of {플레이어}
+	else if {_name} is "마녀":
+		spawn witch at location of {플레이어}
+	else if {_name} is "위더 스켈레톤":
+		spawn wither skeleton at location of {플레이어}
+
+function setMonsterList():
+	set {몬스터리스트::알레이} to true
+	set {몬스터리스트::블레이즈} to true
+	set {몬스터리스트::동굴 거미} to true
+	set {몬스터리스트::거미} to true
+	set {몬스터리스트::크리퍼} to true
+	set {몬스터리스트::좀비} to true
+	set {몬스터리스트::허스크} to true
+	set {몬스터리스트::드라운드} to true
+	set {몬스터리스트::엔더맨} to true
+	set {몬스터리스트::철골렘} to true
+	set {몬스터리스트::팬텀} to true
+	set {몬스터리스트::좀벌레} to true
+	set {몬스터리스트::스켈레톤} to true
+	set {몬스터리스트::슬라임} to true
+	set {몬스터리스트::눈골렘} to true
+	set {몬스터리스트::주민} to true
+	set {몬스터리스트::마녀} to true
+	set {몬스터리스트::위더 스켈레톤} to true

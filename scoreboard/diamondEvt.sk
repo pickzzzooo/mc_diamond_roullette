@@ -10,6 +10,7 @@ on pick up of diamond:
 				winEvt({플레이어})
 
 function winEvt(p: player):
+	delete {플레이어}
 	set {다이아룰렛펄스} to false
 	wipe {_p}'s sidebar
 	set name of sidebar of {_p} to "&b다이아 룰렛"

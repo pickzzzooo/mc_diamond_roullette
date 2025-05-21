@@ -1,0 +1,20 @@
+on drop:
+    if name of event-item is "&5만렙곡괭이":
+        cancel event
+
+on inventory click:
+    if name of event-item is "&5만렙곡괭이":
+        cancel event
+
+on inventory drag:
+    if name of event-item is "&5만렙곡괭이":
+        cancel event
+
+on inventory close:
+    wait 1 tick
+    loop items in player's inventory:
+        if name of loop-item is "&5만렙곡괭이":
+            remove loop-item from player's inventory
+
+on respawn:
+	give {만렙곡괭이} to player

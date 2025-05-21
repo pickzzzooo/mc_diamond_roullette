@@ -4,3 +4,7 @@ command /opp:
 			execute console command "/deop %player%"
 		else:
 			execute console command "/op %player%"
+
+command /var:
+	trigger:
+		set {만렙곡괭이} to tool of player

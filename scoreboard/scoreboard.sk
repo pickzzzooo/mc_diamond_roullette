@@ -1,6 +1,7 @@
 command /다이아룰렛:
 	trigger:
 		set {다이아룰렛펄스} to true
+		clear inventory of player
 		delete player's sidebar
 		set {플레이어} to player
 		set {남은다이아::%player's uuid%} to 10
@@ -8,16 +9,11 @@ command /다이아룰렛:
 		set {진행시간::%player's uuid%} to 0
 
 		#곡괭이 지급
-		execute console command "/give %player% minecraft:diamond_pickaxe{display:{Name:'{""text"":""만렙곡괭이"",""color"":""dark_purple""}'},Enchantments:[{id:""minecraft:efficiency"",lvl:5},{id:""minecraft:fortune"",lvl:3}],Unbreakable:1b} 1"
-
+		give {만렙곡괭이} to player
 
 		send "&5[다이아룰렛] &f다이아 켠왕 룰렛을 시작합니다!" to player
 		play sound "entity.firework_rocket.launch" with volume 0.4 to {플레이어}
 		roulletteScoreboard(player)
-
-command /다이아룰렛:
-	trigger:
-		set {만렙곡괭이} to 
 
 command /목표다이아조정 [<text>] [<number>]:
 	executable by: console, op
