@@ -1,4 +1,5 @@
 command /다버리기:
+	executable by: console, op
 	trigger:
 		set {드랍펄스} to true
 		loop all items in {플레이어}'s inventory:

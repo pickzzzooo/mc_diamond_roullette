@@ -1,0 +1,4 @@
+command /용수철 <number>:
+	executable by: console, op
+	trigger:
+		push {플레이어} upwards at speed arg-1

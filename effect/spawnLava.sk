@@ -1,4 +1,5 @@
 command /용암설치:
+	executable by: console, op
 	trigger:
 		set {_loc} to location of {플레이어}
 		set {_world} to world of {_loc}

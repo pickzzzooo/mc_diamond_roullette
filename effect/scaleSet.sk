@@ -1,0 +1,6 @@
+command /크기조정 <number>:
+    executable by: console, op
+    trigger:
+        execute console command "/scale set %arg-1% %{플레이어}%"
+        wait 60 seconds
+        execute console command "/scale set 1 %{플레이어}%"

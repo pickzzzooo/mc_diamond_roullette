@@ -1,0 +1,36 @@
+options:
+	min.x: -250
+	max.x: 250
+	min.z: -250
+	max.z: 250
+	avoid: air or water block or lava block
+	worlds: "world"
+
+command /랜덤텔포:
+	executable by: console, op
+	trigger:
+		rtp({플레이어})
+					
+function rtp(p: player):
+	delete {movewait.%{_p}%}
+	set {_loc::old} to {_p}'s location
+	continueRtpLOOP({_p}, {_loc::old})
+	   
+function continueRtpLOOP(p: player, oldloc: location):
+	if {_p}'s location is {_oldloc}:
+		set {_loc::new} to location at random number between {@min.x} and {@max.x}, 0, random number between {@min.z} and {@max.z} in {_p}'s world
+		loop blocks above {_loc::new}:
+			if loop-block is air:
+				if block above loop-block is air:
+					if block below loop-block is not air:
+						if block below loop-block is not water:
+							if block below loop-block is not lava:
+								set {_loc::new} to location of loop-block
+								teleport {_p} to {_loc::new}
+								if light level at {_p} <= 2:
+									set block at {_p} to torch
+									stop
+								stop
+
+		wait 2 ticks
+		continueRtpLOOP({_p}, {_oldloc})

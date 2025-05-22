@@ -1,4 +1,5 @@
 command /몬스터 [<text>] [<text>]:
+	executable by: console, op
 	trigger:
 		if {몬스터리스트::*} is not set:
 			setMonsterList()

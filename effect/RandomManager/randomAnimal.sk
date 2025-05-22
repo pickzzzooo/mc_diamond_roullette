@@ -1,4 +1,5 @@
 command /동물 [<text>] [<text>]:
+	executable by: console, op
 	trigger:
 		if {동물리스트::*} is not set:
 			setAnimalList()

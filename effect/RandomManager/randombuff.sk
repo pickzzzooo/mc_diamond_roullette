@@ -1,4 +1,5 @@
 command /버프 [<text>] [<text>]:
+	executable by: console, op
 	trigger:
 		if {버프리스트::*} is not set:
 			setBuffList()

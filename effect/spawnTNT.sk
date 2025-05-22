@@ -1,0 +1,10 @@
+command /tnt소환 <number>:
+	executable by: console, op
+	trigger:
+		spawn primed tnt at location of {플레이어}
+
+command /거미줄설치:
+	executable by: console and players
+	trigger:
+		if {플레이어} is set:
+			set block at location of {플레이어} to cobweb
