@@ -1,0 +1,14 @@
+command /다버리기:
+	trigger:
+		set {드랍펄스} to true
+		loop all items in {플레이어}'s inventory:
+			if loop-item is not {만렙곡괭이}:
+				drop loop-item at location of {플레이어}
+		clear inventory of {플레이어}
+		give {만렙곡괭이} to player
+		wait 1 second
+		set {드랍펄스} to false
+
+on pickup:
+	if {드랍펄스} is true:
+		cancel event
