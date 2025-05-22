@@ -1,0 +1,82 @@
+command /버프 [<text>] [<text>]:
+	trigger:
+		if {버프리스트::*} is not set:
+			setBuffList()
+
+		if arg-1 is not set:
+			message "&5[다이아룰렛] &f랜덤 버프 부여 목록"
+			loop indices of {버프리스트::*}:
+				set {_key} to loop-value
+				set {_value} to {버프리스트::%{_key}%}
+				if {_value} is true:
+					message "&a%{_key}% - %{_value}%"
+				else if {_value} is false:
+					message "&c%{_key}% - %{_value}%"
+		else if arg-1 is "수정":
+			if arg-2 is not set:
+				message "&c[다이아룰렛] &c/버프 수정 (버프)"
+			else:
+				loop indices of {버프리스트::*}:
+					if arg-2 is loop-value:
+						set {_pulse} to true
+						set {_key} to loop-value
+						set {_value} to {버프리스트::%{_key}%}
+						if {_value} is true:
+							set {버프리스트::%{_key}%} to false
+							message "&5[다이아룰렛] &a%{_key}% -> &c%{_key}%"
+						else if {_value} is false:
+							set {버프리스트::%{_key}%} to true
+							message "&5[다이아룰렛] &c%{_key}% -> &a%{_key}%"
+				if {_pulse} is not set:
+					message "&c[다이아룰렛] 유효하지 않은 버프. /버프 입력해서 리스트를 확인해주세요."
+
+		else if arg-1 is "부여":
+			if arg-2 is not set:
+				message "&c[다이아룰렛] &c/버프 부여 (버프)"
+			else:
+				loop indices of {버프리스트::*}:
+					if arg-2 is loop-value:
+						set {_pulse} to true
+						pickBuff(loop-value)
+				if {_pulse} is not set:
+					message "&c[다이아룰렛] 유효하지 않은 버프. /버프 입력해서 리스트를 확인해주세요."
+		else if arg-1 is "랜덤":
+			set {_가능한버프::*} to indices of {버프리스트::*}
+			loop {_가능한버프::*}:
+				if {버프리스트::%loop-value%} is not true:
+					remove loop-value from {_가능한버프::*}
+
+			if size of {_가능한버프::*} > 0:
+				set {_선택된버프} to random element out of {_가능한버프::*}
+				pickBuff({_선택된버프})
+		else:
+			message "&c[다이아룰렛] &c/버프 (랜덤/부여/수정) (값)"
+
+function pickBuff(name: text):
+	if {_name} is "점프 강화":
+		apply jump boost 1 to {플레이어} for 30 seconds
+	else if {_name} is "신속":
+		apply speed 1 to {플레이어} for 30 seconds
+	else if {_name} is "화염 저항":
+		apply fire resistance 1 to {플레이어} for 30 seconds
+	else if {_name} is "수중 호흡":
+		apply water breathing 1 to {플레이어} for 30 seconds
+	else if {_name} is "재생":
+		apply regeneration 1 to {플레이어} for 30 seconds
+	else if {_name} is "힘":
+		apply strength 1 to {플레이어} for 30 seconds
+	else if {_name} is "느린 낙하":
+		apply slow falling 1 to {플레이어} for 30 seconds
+
+
+
+function setBuffList():
+	set {버프리스트::점프 강화} to true
+	set {버프리스트::신속} to true
+	set {버프리스트::화염 저항} to true
+	set {버프리스트::수중 호흡} to true
+	set {버프리스트::재생} to true
+	set {버프리스트::힘} to true
+	set {버프리스트::느린 낙하} to true
+
+

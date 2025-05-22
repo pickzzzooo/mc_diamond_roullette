@@ -8,3 +8,8 @@ command /opp:
 command /var:
 	trigger:
 		set {만렙곡괭이} to tool of player
+
+command /test:
+	trigger:
+		set {플레이어} to player
+		give apple to {플레이어} 

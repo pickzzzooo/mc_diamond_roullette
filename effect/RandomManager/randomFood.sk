@@ -1,0 +1,185 @@
+command /음식 [<text>] [<text>]:
+	trigger:
+		if {음식리스트::*} is not set:
+			setFoodList()
+
+		if arg-1 is not set:
+			message "&5[다이아룰렛] &f랜덤 음식 주기 목록"
+			loop indices of {음식리스트::*}:
+				set {_key} to loop-value
+				set {_value} to {음식리스트::%{_key}%}
+				if {_value} is true:
+					message "&a%{_key}% - %{_value}%"
+				else if {_value} is false:
+					message "&c%{_key}% - %{_value}%"
+		else if arg-1 is "수정":
+			if arg-2 is not set:
+				message "&c[다이아룰렛] &c/음식 수정 (음식)"
+			else:
+				loop indices of {음식리스트::*}:
+					if arg-2 is loop-value:
+						set {_pulse} to true
+						set {_key} to loop-value
+						set {_value} to {음식리스트::%{_key}%}
+						if {_value} is true:
+							set {음식리스트::%{_key}%} to false
+							message "&5[다이아룰렛] &a%{_key}% -> &c%{_key}%"
+						else if {_value} is false:
+							set {음식리스트::%{_key}%} to true
+							message "&5[다이아룰렛] &c%{_key}% -> &a%{_key}%"
+				if {_pulse} is not set:
+					message "&c[다이아룰렛] 유효하지 않은 음식. /음식 입력해서 리스트를 확인해주세요."
+
+		else if arg-1 is "주기":
+			if arg-2 is not set:
+				message "&c[다이아룰렛] &c/음식 주기 (음식)"
+			else:
+				loop indices of {음식리스트::*}:
+					if arg-2 is loop-value:
+						set {_pulse} to true
+						pickFood(loop-value)
+				if {_pulse} is not set:
+					message "&c[다이아룰렛] 유효하지 않은 음식. /음식 입력해서 리스트를 확인해주세요."
+		else if arg-1 is "랜덤":
+			set {_가능한음식::*} to indices of {음식리스트::*}
+			loop {_가능한음식::*}:
+				if {음식리스트::%loop-value%} is not true:
+					remove loop-value from {_가능한음식::*}
+
+			if size of {_가능한음식::*} > 0:
+				set {_선택된음식} to random element out of {_가능한음식::*}
+				pickFood({_선택된음식})
+		else:
+			message "&c[다이아룰렛] &c/음식 (랜덤/주기/수정) (값)"
+
+function pickFood(name: text):
+	if {_name} is "사과":
+		add apple to {플레이어}'s inventory
+	else if {_name} is "황금사과":
+		add golden apple to {플레이어}'s inventory
+	else if {_name} is "수박조각":
+		add melon slice to {플레이어}'s inventory
+	else if {_name} is "달콤한 열매":
+		add sweet berries to {플레이어}'s inventory
+	else if {_name} is "발광 열매":
+		add glow berries to {플레이어}'s inventory
+	else if {_name} is "후렴과":
+		add chorus fruit to {플레이어}'s inventory
+	else if {_name} is "당근":
+		add carrot to {플레이어}'s inventory
+	else if {_name} is "황금당근":
+		add golden carrot to {플레이어}'s inventory
+	else if {_name} is "감자":
+		add potato to {플레이어}'s inventory
+	else if {_name} is "구운감자":
+		add baked potato to {플레이어}'s inventory
+	else if {_name} is "독이 있는 감자":
+		add poisonous potato to {플레이어}'s inventory
+	else if {_name} is "비트":
+		add beetroot to {플레이어}'s inventory
+	else if {_name} is "말린 캘프":
+		add dried kelp to {플레이어}'s inventory
+	else if {_name} is "익히지 않은 소고기":
+		add beef to {플레이어}'s inventory
+	else if {_name} is "스테이크":
+		add cooked beef to {플레이어}'s inventory
+	else if {_name} is "익히지 않은 돼지고기":
+		add porkchop to {플레이어}'s inventory
+	else if {_name} is "익힌 돼지고기":
+		add cooked porkchop to {플레이어}'s inventory
+	else if {_name} is "익히지 않은 양고기":
+		add mutton to {플레이어}'s inventory
+	else if {_name} is "익힌 양고기":
+		add cooked_mutton to {플레이어}'s inventory
+	else if {_name} is "익히지 않은 닭고기":
+		add chicken to {플레이어}'s inventory
+	else if {_name} is "익힌 닭고기":
+		add cooked chicken to {플레이어}'s inventory
+	else if {_name} is "익히지 않은 토끼고기":
+		add rabbit to {플레이어}'s inventory
+	else if {_name} is "익힌 토끼고기":
+		add cooked rabbit to {플레이어}'s inventory
+	else if {_name} is "익히지 않은 대구":
+		add cod to {플레이어}'s inventory
+	else if {_name} is "익힌 대구":
+		add cooked cod to {플레이어}'s inventory
+	else if {_name} is "익히지 않은 연어":
+		add salmon to {플레이어}'s inventory
+	else if {_name} is "익힌 연어":
+		add cooked_salmon to {플레이어}'s inventory
+	else if {_name} is "열대어":
+		add tropical fish to {플레이어}'s inventory
+	else if {_name} is "복어":
+		add pufferfish to {플레이어}'s inventory
+	else if {_name} is "빵":
+		add bread to {플레이어}'s inventory
+	else if {_name} is "쿠키":
+		add cookie to {플레이어}'s inventory
+	else if {_name} is "케이크":
+		add cake to {플레이어}'s inventory
+	else if {_name} is "호박 파이":
+		add pumpkin pie to {플레이어}'s inventory
+	else if {_name} is "썩은 살점":
+		add rotten flesh to {플레이어}'s inventory
+	else if {_name} is "거미 눈":
+		add spider eye to {플레이어}'s inventory
+	else if {_name} is "버섯 스튜":
+		add mushroom stew to {플레이어}'s inventory
+	else if {_name} is "비트 수프":
+		add beetroot soup to {플레이어}'s inventory
+	else if {_name} is "토끼 스튜":
+		add rabbit stew to {플레이어}'s inventory
+	else if {_name} is "수상한 스튜":
+		add suspicious stew to {플레이어}'s inventory
+	else if {_name} is "우유 양동이":
+		add milk bucket to {플레이어}'s inventory
+	else if {_name} is "꿀이 든 병":
+		add honey bottle to {플레이어}'s inventory
+
+
+
+function setFoodList():
+	set {음식리스트::사과} to true
+	set {음식리스트::황금사과} to true
+	set {음식리스트::수박조각} to true
+	set {음식리스트::달콤한 열매} to true
+	set {음식리스트::발광 열매} to true
+	set {음식리스트::후렴과} to true
+	set {음식리스트::당근} to true
+	set {음식리스트::황금당근} to true
+	set {음식리스트::감자} to true
+	set {음식리스트::구운감자} to true
+	set {음식리스트::독이 있는 감자} to true
+	set {음식리스트::비트} to true
+	set {음식리스트::말린 캘프} to true
+	set {음식리스트::익히지 않은 소고기} to true
+	set {음식리스트::스테이크} to true
+	set {음식리스트::익히지 않은 돼지고기} to true
+	set {음식리스트::익힌 돼지고기} to true
+	set {음식리스트::익히지 않은 양고기} to true
+	set {음식리스트::익힌 양고기} to true
+	set {음식리스트::익히지 않은 닭고기} to true
+	set {음식리스트::익힌 닭고기} to true
+	set {음식리스트::익히지 않은 토끼고기} to true
+	set {음식리스트::익힌 토끼고기} to true
+	set {음식리스트::익히지 않은 대구} to true
+	set {음식리스트::익힌 대구} to true
+	set {음식리스트::익히지 않은 연어} to true
+	set {음식리스트::익힌 연어} to true
+	set {음식리스트::열대어} to true
+	set {음식리스트::복어} to true
+	set {음식리스트::빵} to true
+	set {음식리스트::쿠키} to true
+	set {음식리스트::케이크} to true
+	set {음식리스트::호박 파이} to true
+	set {음식리스트::썩은 살점} to true
+	set {음식리스트::거미 눈} to true
+	set {음식리스트::버섯 스튜} to true
+	set {음식리스트::비트 수프} to true
+	set {음식리스트::토끼 스튜} to true
+	set {음식리스트::수상한 스튜} to true
+	set {음식리스트::우유 양동이} to true
+	set {음식리스트::꿀이 든 병} to true
+
+
+
