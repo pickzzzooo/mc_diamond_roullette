@@ -11,5 +11,25 @@ command /var:
 
 command /test:
 	trigger:
-		set {플레이어} to player
-		give apple to {플레이어} 
+		set {동물리스트::아홀로틀} to true
+		set {동물리스트::박쥐} to true
+		set {동물리스트::꿀벌} to true
+		set {동물리스트::낙타} to true
+		set {동물리스트::고양이} to true
+		set {동물리스트::닭} to true
+		set {동물리스트::소} to true
+		set {동물리스트::당나귀} to true
+		set {동물리스트::여우} to true
+		set {동물리스트::염소} to true
+		set {동물리스트::말} to true
+		set {동물리스트::라마} to true
+		set {동물리스트::노새} to true
+		set {동물리스트::오실롯} to true
+		set {동물리스트::판다} to true
+		set {동물리스트::앵무새} to true
+		set {동물리스트::돼지} to true
+		set {동물리스트::북극곰} to true
+		set {동물리스트::토끼} to true
+		set {동물리스트::양} to true
+		set {동물리스트::거북} to true
+		set {동물리스트::늑대} to true

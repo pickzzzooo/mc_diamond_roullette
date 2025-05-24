@@ -1,0 +1,23 @@
+function showRandomList(list: text, p: player):
+	loop indices of {%{_list}%::*}:
+		set {_key} to loop-value
+		set {_value} to {%{_list}%::%{_key}%}
+		if {_value} is true:
+			message "&a%{_key}% - %{_value}%" to {_p}
+		else if {_value} is false:
+			message "&c%{_key}% - %{_value}%" to {_p}
+
+function editRandomList(list: text, p: player, arg: text,category: text):
+	loop indices of {%{_list}%::*}:
+		if {_arg} is loop-value:
+			set {_pulse} to true
+			set {_key} to loop-value
+			set {_value} to {%{_list}%::%{_key}%}
+			if {_value} is true:
+				set {%{_list}%::%{_key}%} to false
+				message "&5[다이아룰렛] &a%{_key}% -> &c%{_key}%" to {_p}
+			else if {_value} is false:
+				set {%{_list}%::%{_key}%} to true
+				message "&5[다이아룰렛] &c%{_key}% -> &a%{_key}%" to {_p}
+	if {_pulse} is not set:
+		message "&c[다이아룰렛] 유효하지 않은 %{_category}%. /%{_category}% 입력해서 리스트를 확인해주세요." to {_p}

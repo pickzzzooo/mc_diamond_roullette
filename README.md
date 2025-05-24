@@ -3,14 +3,14 @@
 투네이션 - 마인크래프트 룰렛 / 후원 연동
 
 # 🔧 개발환경
-## 서버
+### 서버
 arclight-forge-1.20.1-1.0.6 - https://github.com/IzzelAliz/Arclight/releases
 
-## Plugin
+### Plugin
 skript - 2.11.1 - https://github.com/SkriptLang/Skript/releases<br/>
 skrayfall - 1.9.28 - https://dev.bukkit.org/projects/skrayfall/files<br/>
 
-## Mods
+### Mods
 pehkui - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/pehkui<br/>
 alex's mob - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/alexs-mobs<br/>
 citadel - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>

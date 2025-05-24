@@ -6,30 +6,12 @@ command /음식 [<text>] [<text>]:
 
 		if arg-1 is not set:
 			message "&5[다이아룰렛] &f랜덤 음식 주기 목록"
-			loop indices of {음식리스트::*}:
-				set {_key} to loop-value
-				set {_value} to {음식리스트::%{_key}%}
-				if {_value} is true:
-					message "&a%{_key}% - %{_value}%"
-				else if {_value} is false:
-					message "&c%{_key}% - %{_value}%"
+			showRandomList("음식리스트", player)
 		else if arg-1 is "수정":
 			if arg-2 is not set:
 				message "&c[다이아룰렛] &c/음식 수정 (음식)"
 			else:
-				loop indices of {음식리스트::*}:
-					if arg-2 is loop-value:
-						set {_pulse} to true
-						set {_key} to loop-value
-						set {_value} to {음식리스트::%{_key}%}
-						if {_value} is true:
-							set {음식리스트::%{_key}%} to false
-							message "&5[다이아룰렛] &a%{_key}% -> &c%{_key}%"
-						else if {_value} is false:
-							set {음식리스트::%{_key}%} to true
-							message "&5[다이아룰렛] &c%{_key}% -> &a%{_key}%"
-				if {_pulse} is not set:
-					message "&c[다이아룰렛] 유효하지 않은 음식. /음식 입력해서 리스트를 확인해주세요."
+				editRandomList("음식리스트", player, arg-2, "음식")
 
 		else if arg-1 is "주기":
 			if arg-2 is not set:
@@ -50,6 +32,10 @@ command /음식 [<text>] [<text>]:
 			if size of {_가능한음식::*} > 0:
 				set {_선택된음식} to random element out of {_가능한음식::*}
 				pickFood({_선택된음식})
+		else if arg-1 is "초기화":
+			message "&5[다이아룰렛] &f음식리스트 초기화 완료"
+			delete {음식리스트::*}
+            setFoodList()
 		else:
 			message "&c[다이아룰렛] &c/음식 (랜덤/주기/수정) (값)"
 

@@ -1,0 +1,108 @@
+command /알렉스 [<text>] [<text>]:
+	executable by: console, op
+	trigger:
+		if {알렉스리스트::*} is not set:
+			setAlexList()
+
+		if arg-1 is not set:
+			showRandomList("알렉스리스트", player)
+		else if arg-1 is "수정":
+			if arg-2 is not set:
+				message "&c[다이아룰렛] &c/알렉스 수정 (알렉스)"
+			else:
+				editRandomList("알렉스리스트", player, arg-2, "알렉스")
+
+		else if arg-1 is "소환":
+			if arg-2 is not set:
+				message "&c[다이아룰렛] &c/알렉스 소환 (알렉스)"
+			else:
+				loop indices of {알렉스리스트::*}:
+					if arg-2 is loop-value:
+						set {_pulse} to true
+						pickAlex(loop-value)
+				if {_pulse} is not set:
+					message "&c[다이아룰렛] 유효하지 않은 알렉스. /알렉스 입력해서 리스트를 확인해주세요."
+		else if arg-1 is "랜덤":
+			set {_가능한알렉스::*} to indices of {알렉스리스트::*}
+			loop {_가능한알렉스::*}:
+				if {알렉스리스트::%loop-value%} is not true:
+					remove loop-value from {_가능한알렉스::*}
+
+			if size of {_가능한알렉스::*} > 0:
+				set {_선택된알렉스} to random element out of {_가능한알렉스::*}
+				pickAlex({_선택된알렉스})
+		else if arg-1 is "초기화":
+			message "&5[다이아룰렛] &f알렉스리스트 초기화 완료"
+			delete {알렉스리스트::*}
+			setAlexList()
+		else:
+			message "&c[다이아룰렛] &c/알렉스 (랜덤/소환/수정/초기화) (값)"
+
+function pickAlex(name: text):
+	if {_name} is "회색곰":
+		execute console command "execute at %{플레이어}% run summon alexsmobs:grizzly_bear ~ ~ ~"
+	else if {_name} is "해골뱀":
+		execute console command "execute at %{플레이어}% run summon skeleton ~ ~ ~"
+	else if {_name} is "악어":
+		execute console command "execute at %{플레이어}% run summon turtle ~ ~ ~"
+	else if {_name} is "진홍빛모기":
+		execute console command "execute at %{플레이어}% run summon bee ~ ~ ~"
+	else if {_name} is "엔더곰벌레":
+		execute console command "execute at %{플레이어}% run summon endermite ~ ~ ~"
+	else if {_name} is "코모도왕도마뱀":
+		execute console command "execute at %{플레이어}% run summon lizard ~ ~ ~"
+	else if {_name} is "꼬리감는원숭이":
+		execute console command "execute at %{플레이어}% run summon monkey ~ ~ ~"
+	else if {_name} is "뒤틀린두꺼비":
+		execute console command "execute at %{플레이어}% run summon frog ~ ~ ~"
+	else if {_name} is "동굴지네":
+		execute console command "execute at %{플레이어}% run summon silverfish ~ ~ ~"
+	else if {_name} is "눈표범":
+		execute console command "execute at %{플레이어}% run summon ocelot ~ ~ ~"
+	else if {_name} is "멍거스":
+		execute console command "execute at %{플레이어}% run summon cat ~ ~ ~"
+	else if {_name} is "뒤틀린모스코":
+		execute console command "execute at %{플레이어}% run summon mooshroom ~ ~ ~"
+	else if {_name} is "주머니곰":
+		execute console command "execute at %{플레이어}% run summon panda ~ ~ ~"
+	else if {_name} is "향유고래":
+		execute console command "execute at %{플레이어}% run summon dolphin ~ ~ ~"
+	else if {_name} is "흰머리수리":
+		execute console command "execute at %{플레이어}% run summon parrot ~ ~ ~"
+	else if {_name} is "호랑이":
+		execute console command "execute at %{플레이어}% run summon tiger ~ ~ ~"
+	else if {_name} is "개코원숭이":
+		execute console command "execute at %{플레이어}% run summon monkey ~ ~ ~"
+	else if {_name} is "사막비개구리":
+		execute console command "execute at %{플레이어}% run summon frog ~ ~ ~"
+	else if {_name} is "포투":
+		execute console command "execute at %{플레이어}% run summon bat ~ ~ ~"
+	else if {_name} is "하늘다람쥐":
+		execute console command "execute at %{플레이어}% run summon rabbit ~ ~ ~"
+	else if {_name} is "스컹크":
+		execute console command "execute at %{플레이어}% run summon cat ~ ~ ~"
+
+
+
+function setAlexList():
+	set {알렉스리스트::회색곰} to true
+	set {알렉스리스트::해골뱀} to true
+	set {알렉스리스트::악어} to true
+	set {알렉스리스트::진홍빛모기} to true
+	set {알렉스리스트::엔더곰벌레} to true
+	set {알렉스리스트::코모도왕도마뱀} to true
+	set {알렉스리스트::꼬리감는원숭이} to true
+	set {알렉스리스트::뒤틀린두꺼비} to true
+	set {알렉스리스트::동굴지네} to true
+	set {알렉스리스트::눈표범} to true
+	set {알렉스리스트::멍거스} to true
+	set {알렉스리스트::뒤틀린모스코} to true
+	set {알렉스리스트::주머니곰} to true
+	set {알렉스리스트::향유고래} to true
+	set {알렉스리스트::흰머리수리} to true
+	set {알렉스리스트::호랑이} to true
+	set {알렉스리스트::개코원숭이} to true
+	set {알렉스리스트::사막비개구리} to true
+	set {알렉스리스트::포투} to true
+	set {알렉스리스트::하늘다람쥐} to true
+	set {알렉스리스트::스컹크} to true
