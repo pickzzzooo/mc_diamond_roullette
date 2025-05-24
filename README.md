@@ -2,21 +2,21 @@
 
 투네이션 - 마인크래프트 룰렛 / 후원 연동
 
-#🔧 개발환경
-##서버
+# 🔧 개발환경
+## 서버
 arclight-forge-1.20.1-1.0.6 - https://github.com/IzzelAliz/Arclight/releases
 
-##Plugin
+## Plugin
 skript - 2.11.1 - https://github.com/SkriptLang/Skript/releases<br/>
 skrayfall - 1.9.28 - https://dev.bukkit.org/projects/skrayfall/files<br/>
 
-##Mods
+## Mods
 pehkui - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/pehkui<br/>
 alex's mob - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/alexs-mobs<br/>
 citadel - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 
 
-#📝 명령어
+# 📝 명령어
 /다이아룰렛 : 스코어보드 시작, 유저 데이터(다이아 갯수, 진행시간) 초기화 <br/>
 
 
@@ -61,5 +61,5 @@ citadel - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 /크기조정 <크기> : default 1 / 플레이어 크기 조정<br/>
 /랜덤텔포 : 플레이어 주변으로 랜덤 텔포<br/>
 /tnt소환 <숫자>: 플레이어 위치에 점화된 tnt <숫자> 소환<br/>
-/용수철 <숫자>: 플레이어 <숫자> 만크 점프 1~10 
+/용수철 <숫자>: 플레이어 <숫자> 만큼 점프 1~10 
 /거미줄설치 : 플레이어 위치 거미줄 설치<br/>

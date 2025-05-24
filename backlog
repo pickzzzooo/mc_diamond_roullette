@@ -1,5 +1,5 @@
 alpha-2.1
-01.0522
+01.0524
 2025/05/22
 해야해요:
     - randomFood.sk 에서 alias 맞지 않는거 많음!! 친구들이랑 말하는 시간에 테스트 해보셈 (alpha-1.1-01.0522~)
@@ -31,10 +31,14 @@ alpha-2.1
     - 랜덤 음반
 
 comment:
+    01.0524
+        - randomModule.sk : 모듈화 수정중 / Alex'mob 하려다가
+
     01.0522
         - readme 가독성 향상.
         - 모드 추가 / alex's mob, pekui, citadel
         - 몬스터 변신 (제외 / 관련모드 크래쉬)
         - 랜덤텔포 : randTeleport.sk : 좌표 설정 청크로딩된 만큼만 설정 안하면 씹힘
         - tnt 소환
-        - 용수철 : 
+        - 용수철 : 1~10 만큼 점프
+        - 거미줄소환 : spawnTnT.sk

@@ -1,6 +1,6 @@
 command /음식 [<text>] [<text>]:
+	executable by: console, op
 	trigger:
-		executable by: console, op
 		if {음식리스트::*} is not set:
 			setFoodList()
 
