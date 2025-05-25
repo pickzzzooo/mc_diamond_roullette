@@ -64,6 +64,10 @@ function pickAbility(name: text):
 
 	wait {@지속시간} seconds
 	set {능력::%{_name}%} to false
+	if {_name} is "스프링스프링":
+		execute console command "/scale set pehkui:jump_height 1 %{플레이어}%"
+	else if {_name} is "플래시":
+		execute console command "/scale set pehkui:motion 1 %{플레이어}%"
 			
 function setAbilityList():
 	set {랜덤능력리스트::스프링스프링} to true
