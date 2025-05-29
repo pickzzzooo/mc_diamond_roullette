@@ -13,7 +13,3 @@ on respawn:
 	if {능력::플래시} is true:
 		wait 4 ticks
 		execute console command "/scale set pehkui:motion 50 %{플레이어}%"
-
-		
-on consume:
-	message "asdf" to player

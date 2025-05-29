@@ -42,45 +42,43 @@ function pickAlex(name: text):
 	if {_name} is "회색곰":
 		execute console command "execute at %{플레이어}% run summon alexsmobs:grizzly_bear ~ ~ ~"
 	else if {_name} is "해골뱀":
-		execute console command "execute at %{플레이어}% run summon skeleton ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:bone_serpent ~ ~ ~"
 	else if {_name} is "악어":
-		execute console command "execute at %{플레이어}% run summon turtle ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:crocodile ~ ~ ~"
 	else if {_name} is "진홍빛모기":
-		execute console command "execute at %{플레이어}% run summon bee ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:crimson_mosquito ~ ~ ~"
 	else if {_name} is "엔더곰벌레":
-		execute console command "execute at %{플레이어}% run summon endermite ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:endergrade ~ ~ ~"
 	else if {_name} is "코모도왕도마뱀":
-		execute console command "execute at %{플레이어}% run summon lizard ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:komodo_dragon ~ ~ ~"
 	else if {_name} is "꼬리감는원숭이":
-		execute console command "execute at %{플레이어}% run summon monkey ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:capuchin_monkey ~ ~ ~"
 	else if {_name} is "뒤틀린두꺼비":
-		execute console command "execute at %{플레이어}% run summon frog ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:warped_toad ~ ~ ~"
 	else if {_name} is "동굴지네":
-		execute console command "execute at %{플레이어}% run summon silverfish ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:centipede_head ~ ~ ~"
 	else if {_name} is "눈표범":
-		execute console command "execute at %{플레이어}% run summon ocelot ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:snow_leopard ~ ~ ~"
 	else if {_name} is "멍거스":
-		execute console command "execute at %{플레이어}% run summon cat ~ ~ ~"
-	else if {_name} is "뒤틀린모스코":
-		execute console command "execute at %{플레이어}% run summon mooshroom ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:mungus ~ ~ ~"
 	else if {_name} is "주머니곰":
-		execute console command "execute at %{플레이어}% run summon panda ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:tasmanian_devil ~ ~ ~"
 	else if {_name} is "향유고래":
-		execute console command "execute at %{플레이어}% run summon dolphin ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:cachalot_whale ~ ~ ~"
 	else if {_name} is "흰머리수리":
-		execute console command "execute at %{플레이어}% run summon parrot ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:bald_eagle ~ ~ ~"
 	else if {_name} is "호랑이":
-		execute console command "execute at %{플레이어}% run summon tiger ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:tiger ~ ~ ~"
 	else if {_name} is "개코원숭이":
-		execute console command "execute at %{플레이어}% run summon monkey ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:gelada_monkey ~ ~ ~"
 	else if {_name} is "사막비개구리":
-		execute console command "execute at %{플레이어}% run summon frog ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:rain_frog ~ ~ ~"
 	else if {_name} is "포투":
-		execute console command "execute at %{플레이어}% run summon bat ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:potoo ~ ~ ~"
 	else if {_name} is "하늘다람쥐":
-		execute console command "execute at %{플레이어}% run summon rabbit ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:sugar_glider ~ ~ ~"
 	else if {_name} is "스컹크":
-		execute console command "execute at %{플레이어}% run summon cat ~ ~ ~"
+		execute console command "execute at %{플레이어}% run summon alexsmobs:skunk ~ ~ ~"
 
 
 
@@ -96,7 +94,6 @@ function setAlexList():
 	set {알렉스리스트::동굴지네} to true
 	set {알렉스리스트::눈표범} to true
 	set {알렉스리스트::멍거스} to true
-	set {알렉스리스트::뒤틀린모스코} to true
 	set {알렉스리스트::주머니곰} to true
 	set {알렉스리스트::향유고래} to true
 	set {알렉스리스트::흰머리수리} to true

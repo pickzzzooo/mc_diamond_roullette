@@ -1,0 +1,9 @@
+command /사운드 [<text>] [<number>]:
+    executable by: console, op
+    trigger:
+        if arg-1 is not set:
+            message "&c[다이아룰렛] /사운드 [<사운드이름>] [<볼륨>]" to {플레이어}
+        else if arg-2 is not set:
+            message "&c[다이아룰렛] /사운드 [<사운드이름>] [<볼륨>]" to {플레이어}
+
+        play sound arg-1 with volume arg-2 to {플레이어}

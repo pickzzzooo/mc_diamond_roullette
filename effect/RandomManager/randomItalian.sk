@@ -1,0 +1,68 @@
+command /이탈리안 [<text>] [<text>]:
+	executable by: console, op
+	trigger:
+		if {이탈리안리스트::*} is not set:
+			setItalianList()
+
+		if arg-1 is not set:
+			message "&5[다이아룰렛] &f랜덤 이탈리안 소환 목록"
+			showRandomList("이탈리안리스트", player)
+		else if arg-1 is "수정":
+			if arg-2 is not set:
+				message "&c[다이아룰렛] &c/이탈리안 수정 (이탈리안)"
+			else:
+				editRandomList("이탈리안리스트", player, arg-2, "이탈리안")
+
+		else if arg-1 is "소환":
+			if arg-2 is not set:
+				message "&c[다이아룰렛] &c/이탈리안 소환 (이탈리안)"
+			else:
+				loop indices of {이탈리안리스트::*}:
+					if arg-2 is loop-value:
+						set {_pulse} to true
+						pickItalian(loop-value)
+				if {_pulse} is not set:
+					message "&c[다이아룰렛] 유효하지 않은 이탈리안. /이탈리안 입력해서 리스트를 확인해주세요."
+		else if arg-1 is "랜덤":
+			set {_가능한이탈리안::*} to indices of {이탈리안리스트::*}
+			loop {_가능한이탈리안::*}:
+				if {이탈리안리스트::%loop-value%} is not true:
+					remove loop-value from {_가능한이탈리안::*}
+
+			if size of {_가능한이탈리안::*} > 0:
+				set {_선택된이탈리안} to random element out of {_가능한이탈리안::*}
+				pickItalian({_선택된이탈리안})
+		else if arg-1 is "초기화":
+			message "&5[다이아룰렛] &f이탈리안리스트 초기화 완료"
+			delete {이탈리안리스트::*}
+			setItalianList()
+		else:
+			message "&c[다이아룰렛] &c/이탈리안 (랜덤/소환/수정) (값)"
+
+function pickItalian(name: text):
+	if {_name} is "트랄랄렐로":
+		execute console command "execute at %{플레이어}% run summon owleaf_brainrot_italian:tralalero_tralala ~ ~ ~ {Tags:[""%{플레이어}%""]}"
+	else if {_name} is "부르르부르르":
+		execute console command "execute at %{플레이어}% run summon owleaf_brainrot_italian:br_br_patapim ~ ~ ~"
+	else if {_name} is "카푸치노":
+		execute console command "execute at %{플레이어}% run summon owleaf_brainrot_italian:capuccino ~ ~ ~"
+	else if {_name} is "카푸치나":
+		execute console command "execute at %{플레이어}% run summon owleaf_brainrot_italian:capuchina_balerina ~ ~ ~"
+	else if {_name} is "리릴리라릴라":
+		execute console command "execute at %{플레이어}% run summon owleaf_brainrot_italian:lirili_larilila ~ ~ ~"
+	else if {_name} is "봄바르디노":
+		execute console command "execute at %{플레이어}% run summon owleaf_brainrot_italian:bombardino_cocodrilo ~ ~ ~"
+	else if {_name} is "퉁퉁퉁":
+		execute console command "execute at %{플레이어}% run summon owleaf_brainrot_italian:ta_ta_ta_ta_sahur ~ ~ ~"
+	else if {_name} is "타타타":
+		execute console command "execute at %{플레이어}% run summon owleaf_brainrot_italian:tung_tung_sahur ~ ~ ~"
+
+function setItalianList():
+	set {이탈리안리스트::트랄랄렐로} to true
+	set {이탈리안리스트::부르르부르르} to true
+	set {이탈리안리스트::카푸치노} to true
+	set {이탈리안리스트::카푸치나} to true
+	set {이탈리안리스트::리릴리라릴라} to true
+	set {이탈리안리스트::봄바르디노} to true
+	set {이탈리안리스트::퉁퉁퉁} to true
+	set {이탈리안리스트::타타타} to true

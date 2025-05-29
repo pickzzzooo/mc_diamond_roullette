@@ -14,6 +14,8 @@ skrayfall - 1.9.28 - https://dev.bukkit.org/projects/skrayfall/files<br/>
 pehkui - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/pehkui<br/>
 alex's mob - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/alexs-mobs<br/>
 citadel - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
+ITALIAN BRAINROT - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/italian-brainrot <br/>
+GeckoLib - 1.20.0 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 
 
 # 📝 명령어
@@ -55,6 +57,26 @@ citadel - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 /음식 수정 <음식> : 해당 음식 랜덤 리스트 포함/제외<br/>
 /음식 랜덤 : 랜덤 리스트에 있는 음식 랜덤 주기 (확률은 모두 동일)<br/>
 
+/알렉스 [<랜덤/소환/수정>] [<값>]<br/>
+/알렉스 : 현재 랜덤으로 나오는 알렉스 리스트 조회<br/>
+/알렉스 소환 <알렉스> : 해당 알렉스 소환<br/>
+/알렉스 수정 <알렉스> : 해당 알렉스 랜덤 리스트 포함/제외<br/>
+/알렉스 랜덤 : 랜덤 리스트에 있는 알렉스 랜덤 소환 (확률은 모두 동일)<br/>
+
+/이탈리안 [<랜덤/소환/수정>] [<값>]<br/>
+/이탈리안 : 현재 랜덤으로 나오는 이탈리안 리스트 조회<br/>
+/이탈리안 소환 <이탈리안> : 해당 음이탈리안 소환<br/>
+/이탈리안 수정 <이탈리안> : 해당 이탈리안 랜덤 리스트 포함/제외<br/>
+/이탈리안 랜덤 : 랜덤 리스트에 있는 이탈리안 랜덤 소환 (확률은 모두 동일)<br/>
+
+/랜덤능력 [<랜덤/부여/수정>] [<값>]<br/>
+/랜덤능력 : 현재 랜덤으로 나오는 랜덤능력 리스트 조회<br/>
+/랜덤능력 부여 <랜덤능력> : 해당 랜덤능력 부여<br/>
+/랜덤능력 수정 <랜덤능력> : 해당 랜덤능력 랜덤 리스트 포함/제외<br/>
+/랜덤능력 랜덤 : 랜덤 리스트에 있는 랜덤능력 랜덤 주기 (확률은 모두 동일)<br/>
+
+
+
 /용암설치 : 주변 4칸 용암생성<br/>
 /다버리기 : 만렙곡괭이 빼고 다 버리기<br/>
 
@@ -65,9 +87,3 @@ citadel - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 /거미줄설치 : 플레이어 위치 거미줄 설치<br/>
 
 
-
-/랜덤능력 [<랜덤/부여/수정>] [<값>]<br/>
-/랜덤능력 : 현재 랜덤으로 나오는 랜덤능력 리스트 조회<br/>
-/랜덤능력 부여 <랜덤능력> : 해당 랜덤능력 부여<br/>
-/랜덤능력 수정 <랜덤능력> : 해당 랜덤능력 랜덤 리스트 포함/제외<br/>
-/랜덤능력 랜덤 : 랜덤 리스트에 있는 랜덤능력 랜덤 주기 (확률은 모두 동일)<br/>

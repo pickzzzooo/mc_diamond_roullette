@@ -36,7 +36,7 @@ command /몬스터 [<text>] [<text>]:
 		else if arg-1 is "초기화":
 			message "&5[다이아룰렛] &f몬스터리스트 초기화 완료"
 			delete {몬스터리스트::*}
-            setMonsterList()
+			setMonsterList()
 		else:
 			message "&c[다이아룰렛] &c/몬스터 (랜덤/소환/수정) (값)"
 
