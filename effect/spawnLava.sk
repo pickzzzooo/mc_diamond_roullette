@@ -7,7 +7,4 @@ command /용암설치:
 		set {_y} to y-coordinate of {_loc}
 		set {_z} to z-coordinate of {_loc}
 
-		set block at location at ({_x} + 1), {_y}, {_z} in {_world} to lava
-		set block at location at ({_x} - 1), {_y}, {_z} in {_world} to lava
-		set block at location at {_x}, {_y}, ({_z} + 1) in {_world} to lava
-		set block at location at {_x}, {_y}, ({_z} - 1) in {_world} to lava
+		set block at location at {_x}, ({_y} + 2), {_z} in {_world} to lava

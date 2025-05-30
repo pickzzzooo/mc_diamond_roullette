@@ -7,9 +7,9 @@ on break:
 		drop mushroom stew named "&e짜장면" at location of event-block
 
 on respawn:
-	if {능력::스프링스프링} is true:
+	if {능력::점프강화} is true:
 		wait 4 ticks
 		execute console command "/scale set pehkui:jump_height 10 %{플레이어}%"
-	if {능력::플래시} is true:
+	if {능력::속도강화} is true:
 		wait 4 ticks
 		execute console command "/scale set pehkui:motion 50 %{플레이어}%"

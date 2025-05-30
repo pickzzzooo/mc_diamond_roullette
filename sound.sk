@@ -7,3 +7,11 @@ command /사운드 [<text>] [<number>]:
             message "&c[다이아룰렛] /사운드 [<사운드이름>] [<볼륨>]" to {플레이어}
 
         play sound arg-1 with volume arg-2 to {플레이어}
+
+command /메시지 [<text>]:
+    executable by: console, op
+    trigger:
+        if arg-1 is not set:
+            message "&c[다이아룰렛] /메시지 [<텍스트>]" to {플레이어}
+        else:
+            broadcast colored "&5[다이아룰렛] &f%arg-1%"

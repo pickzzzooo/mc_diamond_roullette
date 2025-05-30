@@ -49,9 +49,9 @@ function pickAbility(name: text):
 			wait 0.7 second
 	else if {_name} is "짜장짜장열매":
 		message "%{능력}%" to {플레이어}
-	else if {_name} is "스프링스프링":
+	else if {_name} is "점프강화":
 		execute console command "/scale set pehkui:jump_height 10 %{플레이어}%"
-	else if {_name} is "플래시":
+	else if {_name} is "속도강화":
 		execute console command "/scale set pehkui:motion 50 %{플레이어}%"
 	else if {_name} is "뱀파이어":
 		while {능력::뱀파이어} is true:
@@ -64,16 +64,16 @@ function pickAbility(name: text):
 
 	wait {@지속시간} seconds
 	set {능력::%{_name}%} to false
-	if {_name} is "스프링스프링":
+	if {_name} is "점프강화":
 		execute console command "/scale set pehkui:jump_height 1 %{플레이어}%"
-	else if {_name} is "플래시":
+	else if {_name} is "속도강화":
 		execute console command "/scale set pehkui:motion 1 %{플레이어}%"
 			
 function setAbilityList():
-	set {랜덤능력리스트::스프링스프링} to true
-	set {랜덤능력리스트::짜장짜장열매} to true
-	set {랜덤능력리스트::캥거루} to true
-	set {랜덤능력리스트::플래시} to true
-	set {랜덤능력리스트::보트를낳아요} to true
-	set {랜덤능력리스트::뱀파이어} to true
+	set {랜덤능력리스트::점프강화} to true
+	#set {랜덤능력리스트::짜장짜장열매} to true
+	#set {랜덤능력리스트::캥거루} to true
+	set {랜덤능력리스트::속도강화} to true
+	#set {랜덤능력리스트::보트를낳아요} to true
+	#set {랜덤능력리스트::뱀파이어} to true
 	
