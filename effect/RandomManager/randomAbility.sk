@@ -1,5 +1,5 @@
 options:
-	지속시간: 10
+	지속시간: 60
 
 command /랜덤능력 [<text>] [<text>]:
 	executable by: console, op

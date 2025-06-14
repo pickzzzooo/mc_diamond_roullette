@@ -88,12 +88,12 @@ GeckoLib - 1.20.0 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 
 
 ## 유용한 사운드
-entity.player.levelup : 레벨업
-entity.experience_orb.pickup : 경험치
-entity.generic.explode : tnt 폭발
-entity.dragon_fireball.explode : 드래곤 구체 폭발
-entity.firework_rocket.blast : 폭죽 폭발
-entity.firework_rocket.launch : 폭줄 발사
-entity.ender_dragon.growl : 드래곤 포효
-entity.player.attack.crit : 크리티컬 소리
-block.note_block.harp : harp 노트
+entity.player.levelup : 레벨업 <br/>
+entity.experience_orb.pickup : 경험치 <br/>
+entity.generic.explode : tnt 폭발 <br/>
+entity.dragon_fireball.explode : 드래곤 구체 폭발 <br/>
+entity.firework_rocket.blast : 폭죽 폭발 <br/> 
+entity.firework_rocket.launch : 폭줄 발사 <br/>
+entity.ender_dragon.growl : 드래곤 포효 <br/>
+entity.player.attack.crit : 크리티컬 소리 <br/>
+block.note_block.harp : harp 노트 <br/>
