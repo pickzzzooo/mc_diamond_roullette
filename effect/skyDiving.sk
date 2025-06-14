@@ -1,0 +1,17 @@
+command /스카이다이빙:
+    executable by: console, op
+    trigger:
+        set {_loc} to location of {플레이어}
+        set {_world} to world of {_loc}
+        set {_x} to x-coordinate of {_loc}
+        set {_z} to z-coordinate of {_loc}
+
+        teleport {플레이어} to location at {_x}, 200, {_z} in {_world}
+        set {낙뎀펄스} to true
+
+
+on damage:
+    damage cause is fall
+    if {낙뎀펄스} is true:
+        cancel event
+        delete {낙뎀펄스}

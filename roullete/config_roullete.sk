@@ -1,0 +1,18 @@
+command /룰렛설정:
+    executable by: console, op
+    trigger:
+        delete {룰렛::*}
+        set {룰렛::항목::1} to "다이아 +1"
+        set {룰렛::가중치::1} to 1
+        set {룰렛::명령어::1::1} to "남은다이아조정 추가 1"
+        set {룰렛::명령어::1::2} to "메시지 %%name%%님이 후원하셨습니다."
+
+        set {룰렛::항목::2} to "몬스터 소환"
+        set {룰렛::가중치::2} to 1
+        set {룰렛::명령어::2::1} to "몬스터 랜덤"
+        set {룰렛::명령어::2::2} to "메시지 %%name%%님이 후원하셨습니다."
+
+        message "&5[다이아룰렛]&f 룰렛설정이 완료되었습니다."
+        loop {룰렛::*}:
+            message "%loop-value%"
+

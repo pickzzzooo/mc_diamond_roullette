@@ -53,6 +53,7 @@ function pickBuff(name: text):
 		apply strength 1 to {플레이어} for 30 seconds
 	else if {_name} is "느린 낙하":
 		apply slow falling 1 to {플레이어} for 30 seconds
+	broadcast "&5[다이아룰렛] &f랜덤버프부여 : %{_name}%"
 
 
 

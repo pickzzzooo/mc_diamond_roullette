@@ -6,6 +6,7 @@ on pick up of diamond:
 			add amount of event-item to {얻은다이아::%player's uuid%}
 			wait 1 ticks		
 			give amount of event-item of diamond named "&b다이아몬드" to player
+			play sound "entity.item.pickup" with volume 0.4 to player
 			if {남은다이아::%player's uuid%} <= {얻은다이아::%player's uuid%}:
 				winEvt({플레이어})
 
@@ -17,13 +18,13 @@ function winEvt(p: player):
 	set score "    &6우승!    " in sidebar of {_p} to 3
 
 	set {_uuid} to {_p}'s uuid
-	set score "얻은/남은 다이아 : &b%{얻은다이아::%{_uuid}%}% &f/ &3%{남은다이아::%{_uuid}%}%" in sidebar of {_p} to 2
+	set {_남다} to ({남은다이아::%{_uuid}%} - {얻은다이아::%{_uuid}%})
+	set score "남은 다이아 : &b%{_남다}%" in sidebar of {_p} to 2
 
 	set {_time} to 시간_변환({진행시간::%{_uuid}%})
 
 	set score "진행시간 : %{_time}%" in sidebar of {_p} to 1
-
-	play sound "music_disc.otherside" with volume 1 to {_p}
+	
 	play sound "entity.player.levelup" with volume 0.5 to {_p}
 	send title "&6다이아를 모두 캐냈습니다!!!" with subtitle "다이아 &b%{얻은다이아::%{_uuid}%}% &f개를 캤습니다" to {_p} for 5 seconds
 	wait 1 tick

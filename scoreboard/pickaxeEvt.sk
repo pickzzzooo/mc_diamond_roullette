@@ -12,11 +12,17 @@ on inventory drag:
 	if name of event-item is "&9다이아곡괭이":
 		cancel event
 
-on inventory close:
-	wait 1 tick
-	loop items in player's inventory:
-		if name of loop-item is "&9다이아곡괭이":
-			remove loop-item from player's inventory
+on swap hand items:
+	if name of player's tool is "&9다이아곡괭이":
+		cancel event
+	if name of player's offhand item is "&9다이아곡괭이":
+		cancel event
+
+#on inventory close:
+#	wait 1 tick
+#	loop items in player's inventory:
+#		if name of loop-item is "&9다이아곡괭이":
+#			remove loop-item from player's inventory
 
 on respawn:
 	if {다이아룰렛펄스} is true:
@@ -24,4 +30,7 @@ on respawn:
 		execute console command "/give %{플레이어}% minecraft:diamond_pickaxe{display:{Name:'{""text"":""다이아곡괭이"",""color"":""blue""}'},Enchantments:[{id:""minecraft:efficiency"",lvl:5}],Unbreakable:1b} 1"
 		#give {만렙곡괭이} to {플레이어}
 
+command /다이아곡괭이:
+	trigger:
+		execute console command "/give %{플레이어}% minecraft:diamond_pickaxe{display:{Name:'{""text"":""다이아곡괭이"",""color"":""blue""}'},Enchantments:[{id:""minecraft:efficiency"",lvl:5}],Unbreakable:1b} 1"
 

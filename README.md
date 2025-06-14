@@ -17,6 +17,10 @@ citadel - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 ITALIAN BRAINROT - 1.20.1 - https://www.curseforge.com/minecraft/mc-mods/italian-brainrot <br/>
 GeckoLib - 1.20.0 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 
+# 💾 파일경로
+치즈 연동 : .\plugins\chzzk\config.yml<br/>
+투네 연동 : .\plugins\MCToon\config.yml<br/>
+룰렛 설정 : .plugins\Skript\scripts\mc_diamond_roullette\roullete\config_roullete.sk<br/>
 
 # 📝 명령어
 /다이아룰렛 : 스코어보드 시작, 유저 데이터(다이아 갯수, 진행시간) 초기화 <br/>
@@ -86,6 +90,9 @@ GeckoLib - 1.20.0 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 /용수철 <숫자>: 플레이어 <숫자> 만큼 점프 1~10 
 /거미줄설치 : 플레이어 위치 거미줄 설치<br/>
 
+/룰렛 : 룰렛 돌리기 <br/>
+/룰렛설정 : 룰렛설정 변경 후 변수 재설정 <br/>
+/룰렛확인 : 현재 남은 룰렛 큐 메시지 출력 <br/>
 
 ## 유용한 사운드
 entity.player.levelup : 레벨업 <br/>

@@ -68,6 +68,8 @@ function pickAbility(name: text):
 		execute console command "/scale set pehkui:jump_height 1 %{플레이어}%"
 	else if {_name} is "속도강화":
 		execute console command "/scale set pehkui:motion 1 %{플레이어}%"
+	
+	broadcast "&5[다이아룰렛] &f랜덤능력부여 : %{_name}%"
 			
 function setAbilityList():
 	set {랜덤능력리스트::점프강화} to true

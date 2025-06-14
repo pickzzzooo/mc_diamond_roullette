@@ -1,0 +1,41 @@
+options:
+    count: 16
+    tick: 2
+    seconds: 3
+
+command /룰렛:
+    executable by: console, op
+    trigger:
+        add 1 to {룰렛큐}
+
+function rolling():
+    set {_rand} to random element of {룰렛::항목::*}
+    send action bar "%{_rand}%" to {플레이어}
+    play sound "block.note_block.hat" with volume 1 to {플레이어}
+
+every {@seconds} seconds:
+    if {룰렛큐} > 0:
+        set {_sum} to 0
+        loop {룰렛::가중치::*}:
+            add loop-value to {_sum}
+        set {_rand} to random integer between 1 and {_sum}
+        set {_cumulative} to 0
+        loop {룰렛::가중치::*}:
+            add loop-value to {_cumulative}
+            if {_rand} is less than or equal to {_cumulative}:
+                set {_결과} to loop-index
+                stop loop
+        loop {@count} times:
+            rolling()
+            wait {@tick} ticks
+        loop {룰렛::명령어::%{_결과}%::*}:
+            execute console command "/%loop-value%"
+            send action bar "%{룰렛::항목::%{_결과}%}%" to {플레이어}
+        remove 1 from {룰렛큐}
+
+command /룰렛확인:
+    trigger:
+        message "&5[다이아룰렛]&f 남은룰렛 : %{룰렛큐}%"
+
+on load:
+    set {룰렛큐} to 0

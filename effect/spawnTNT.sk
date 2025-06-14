@@ -1,7 +1,12 @@
 command /tnt소환 <number>:
 	executable by: console, op
 	trigger:
-		spawn primed tnt at location of {플레이어}
+		loop arg-1 times:
+			spawn primed tnt at location of {플레이어}
+			play sound "entity.tnt.primed" with volume 1 to {플레이어}
+			wait 4 tick
+			
+
 
 command /거미줄설치:
 	executable by: console and players

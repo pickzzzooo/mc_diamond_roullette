@@ -77,6 +77,7 @@ function pickMonster(name: text):
 		spawn witch at location of {플레이어}
 	else if {_name} is "위더 스켈레톤":
 		spawn wither skeleton at location of {플레이어}
+	broadcast "&5[다이아룰렛] &f랜덤몬스터소환 : %{_name}%"
 
 function setMonsterList():
 	set {몬스터리스트::알레이} to true

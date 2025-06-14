@@ -1,8 +1,8 @@
 options:
-	min.x: -250
-	max.x: 250
-	min.z: -250
-	max.z: 250
+	min.x: -150
+	max.x: 150
+	min.z: -150
+	max.z: 150
 	avoid: air or water block or lava block
 	worlds: "world"
 
