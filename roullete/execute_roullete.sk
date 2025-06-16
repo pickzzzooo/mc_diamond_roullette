@@ -1,41 +1,79 @@
 options:
-    count: 16
-    tick: 2
-    seconds: 3
+	count: 16
+	tick: 2
+	seconds: 3
 
-command /룰렛:
-    executable by: console, op
-    trigger:
-        add 1 to {룰렛큐}
+command /룰렛 [<text>]:
+	executable by: console, op
+	trigger:
+		if {다이아룰렛펄스} is true:
+			add 1 to {룰렛큐}
+			add arg-1 to {룰렛큐유저::*}
+
 
 function rolling():
-    set {_rand} to random element of {룰렛::항목::*}
-    send action bar "%{_rand}%" to {플레이어}
-    play sound "block.note_block.hat" with volume 1 to {플레이어}
+	set {_rand} to random element of {룰렛::항목::*}
+	send action bar "%{_rand}%" to {플레이어}
+	play sound "block.note_block.hat" with volume 0.3 to {플레이어}
 
 every {@seconds} seconds:
-    if {룰렛큐} > 0:
-        set {_sum} to 0
-        loop {룰렛::가중치::*}:
-            add loop-value to {_sum}
-        set {_rand} to random integer between 1 and {_sum}
-        set {_cumulative} to 0
-        loop {룰렛::가중치::*}:
-            add loop-value to {_cumulative}
-            if {_rand} is less than or equal to {_cumulative}:
-                set {_결과} to loop-index
-                stop loop
-        loop {@count} times:
-            rolling()
-            wait {@tick} ticks
-        loop {룰렛::명령어::%{_결과}%::*}:
-            execute console command "/%loop-value%"
-            send action bar "%{룰렛::항목::%{_결과}%}%" to {플레이어}
-        remove 1 from {룰렛큐}
+	if {룰렛큐} > 0:
+		if {플레이어사망펄스} is false:
+			set {_입력값} to {룰렛큐유저::1}
+			# 나중에 삭제되기 전에 미리 저장해 둠
+
+			set {_sum} to 0
+			loop {룰렛::가중치::*}:
+				add loop-value to {_sum}
+			set {_rand} to random integer between 1 and {_sum}
+			set {_cumulative} to 0
+			loop {룰렛::가중치::*}:
+				add loop-value to {_cumulative}
+				if {_rand} is less than or equal to {_cumulative}:
+					set {_결과} to loop-index
+					stop loop
+			loop {@count} times:
+				rolling()
+				wait {@tick} ticks
+			send action bar "&a%{룰렛::항목::%{_결과}%}%" to {플레이어}
+			loop {룰렛::명령어::%{_결과}%::*}:
+				execute console command "%loop-value%"
+			play sound "entity.experience_orb.pickup" with volume 0.3 to {플레이어}
+
+
+			wait 1 tick
+			broadcast "&5[다이아룰렛] &7- - - - - - - - - - - - - - - - - - - -"
+			broadcast "&5[다이아룰렛] "
+			broadcast "&5[다이아룰렛] &e%{_입력값}%&f님이 &a%{룰렛::항목::%{_결과}%}% &f(을)를 뽑으셨습니다. "
+			broadcast "&5[다이아룰렛] "
+			broadcast "&5[다이아룰렛] &7- - - - - - - - - - - - - - - - - - - -"
+
+			# 그 후 삭제 및 당김
+			delete {룰렛큐유저::1}
+			set {_index} to 1
+			loop {룰렛큐유저::*}:
+				add 1 to {_index}
+				set {룰렛큐유저::%{_index} - 1%} to loop-value
+			delete {룰렛큐유저::%{_index}%}
+
+
+			remove 1 from {룰렛큐}
+
+
 
 command /룰렛확인:
-    trigger:
-        message "&5[다이아룰렛]&f 남은룰렛 : %{룰렛큐}%"
+	trigger:
+		broadcast "&5[다이아룰렛]&f 남은룰렛 : %{룰렛큐}%"
+		broadcast "&5[다이아룰렛]&f 다음룰렛유저 : %{룰렛큐유저::1}%"
+
+
+on death of player:
+	set {플레이어사망펄스} to true
+
+on respawn:
+	set {플레이어사망펄스} to false
 
 on load:
-    set {룰렛큐} to 0
+	set {룰렛큐} to 0
+	set {플레이어사망펄스} to false
+	delete {룰렛큐유저::*}

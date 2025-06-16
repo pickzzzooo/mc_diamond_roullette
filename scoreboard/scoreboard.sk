@@ -73,8 +73,7 @@ every 1 seconds:
 
 
 function roulletteScoreboard(p: player):	
-	set name of sidebar of {_p} to "&b다이아 룰렛"
-	set score "룰렛은 투네이션으로!" in sidebar of {_p} to 3
+	set name of sidebar of {_p} to "&3다이아 룰렛"
 
 	set {_uuid} to {_p}'s uuid
 	set {_남다} to ({남은다이아::%{_uuid}%} - {얻은다이아::%{_uuid}%})

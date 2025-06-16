@@ -1,0 +1,73 @@
+options:
+#Minimum amount of blocks farm from X cord to tp to
+	min.x: -500
+#maximum amount of blocks farm from X cord to tp to
+	max.x: 500
+#Minimum amount of blocks farm from Z cord to tp to
+	min.z: -500
+#maximum amount of blocks farm from Z cord to tp to
+	max.z: 500
+#Amount of time before the player will be allowed to use the command again
+	cooldown: 1 tick
+#Avoid spawning in lava, water and air
+	avoid: air or water block or lava block
+#To add worlds it would look like 
+#	worlds: "world" or "world_nether" or "world_the_end"
+	worlds: "world"
+#Can not execute command in this world message
+	NoWorldMsg: &4You can’t use this command in this world!
+
+
+
+command /랜덤텔포:
+	description: Teleports player to random location not in water
+	aliases: /rtp
+	trigger:
+		rtp({플레이어})
+					
+function rtp(p: player):
+	delete {movewait.%{_p}%}
+	set {_loc::old} to {_p}'s location
+	continueRtpLOOP({_p}, {_loc::old})
+	   
+function continueRtpLOOP(p: player, oldloc: location, tries: number = 0):
+	# 시도 제한
+	if {_tries} > 10:
+		send "&c10번 시도했지만 안전한 위치를 찾지 못했습니다. 다시 시도해주세요." to {플레이어}
+		stop
+
+	# 현재 위치와 비교 - 약간의 오차 허용
+	if distance between location of {_p} and {_oldloc} <= 0.1:
+		set {_x} to random number between {@min.x} and {@max.x}
+		set {_z} to random number between {@min.z} and {@max.z}
+		set {_world} to world of {_p}
+		set {_loc::new} to location at {_x}, 0, {_z} in {_world}
+
+		set {_found} to false
+
+		loop blocks above {_loc::new}:
+			if loop-block is air:
+				if block above loop-block is air:
+					if block under loop-block is not air:
+						if block under loop-block is not water:
+							if block under loop-block is not lava:
+								set {_safeLoc} to location of loop-block
+								teleport {_p} to {_safeLoc}
+								set {cooldowns::randomtp::%uuid of {_p}%} to now
+								if light level at {_safeLoc} <= 2:
+									set block at {_safeLoc} to torch
+								set {_found} to true
+								stop
+
+		if {_found} is false:
+			wait 2 ticks
+			continueRtpLOOP({_p}, {_oldloc}, {_tries} + 1)
+
+command /asdf:
+	trigger:
+		loop 10 times:
+			message "&a테스트 : &f%loop-value% 회"
+			execute player command "/rtp"
+			wait 4 tick
+			play sound "entity.firework_rocket.launch" with volume 0.4 to {플레이어}
+			wait 1 second

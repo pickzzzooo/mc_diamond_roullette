@@ -1,6 +1,16 @@
+options:
+    지속시간: 5
+
 command /크기조정 <number>:
     executable by: console, op
     trigger:
+        if {크기펄스} is not set:
+            set {크기펄스} to 0
+            set {_임시크기펄스} to {크기펄스}
+        else:
+            add 1 to {크기펄스}
+            set {_임시크기펄스} to {크기펄스}
         execute console command "/scale set %arg-1% %{플레이어}%"
-        wait 60 seconds
-        execute console command "/scale set 1 %{플레이어}%"
+        wait {@지속시간} seconds
+        if {크기펄스} is {_임시크기펄스}:
+            execute console command "/scale set 1 %{플레이어}%"

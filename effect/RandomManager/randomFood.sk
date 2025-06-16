@@ -35,7 +35,7 @@ command /음식 [<text>] [<text>]:
 		else if arg-1 is "초기화":
 			message "&5[다이아룰렛] &f음식리스트 초기화 완료"
 			delete {음식리스트::*}
-            setFoodList()
+			setFoodList()
 		else:
 			message "&c[다이아룰렛] &c/음식 (랜덤/주기/수정) (값)"
 
@@ -122,7 +122,7 @@ function pickFood(name: text):
 		add milk bucket to {플레이어}'s inventory
 	else if {_name} is "꿀이 든 병":
 		add honey bottle to {플레이어}'s inventory
-	broadcast "&5[다이아룰렛] &f랜덤음식주기 : %{_name}%"
+
 
 
 function setFoodList():

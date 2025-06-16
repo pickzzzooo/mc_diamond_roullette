@@ -10,8 +10,10 @@ command /스카이다이빙:
         set {낙뎀펄스} to true
 
 
+
 on damage:
     damage cause is fall
     if {낙뎀펄스} is true:
         cancel event
         delete {낙뎀펄스}
+

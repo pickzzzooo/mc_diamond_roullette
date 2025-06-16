@@ -1,5 +1,5 @@
 options:
-	지속시간: 60
+	지속시간: 5
 
 command /랜덤능력 [<text>] [<text>]:
 	executable by: console, op
@@ -42,7 +42,13 @@ command /랜덤능력 [<text>] [<text>]:
 			message "&c[다이아룰렛] &c/랜덤능력 (랜덤/부여/수정/초기화) (값)"
 
 function pickAbility(name: text):
-	set {능력::%{_name}%} to true
+	if {능력::%{_name}%} is not set:
+		set {능력::%{_name}%} to 0
+	else:
+		add 1 to {능력::%{_name}%}
+	
+	set {_능력펄스} to {능력::%{_name}%}
+
 	if {_name} is "캥거루":
 		loop 60 times:
 			execute console command "/용수철 0.5"
@@ -50,7 +56,7 @@ function pickAbility(name: text):
 	else if {_name} is "짜장짜장열매":
 		message "%{능력}%" to {플레이어}
 	else if {_name} is "점프강화":
-		execute console command "/scale set pehkui:jump_height 10 %{플레이어}%"
+		execute console command "/scale set pehkui:jump_height 3 %{플레이어}%"
 	else if {_name} is "속도강화":
 		execute console command "/scale set pehkui:motion 50 %{플레이어}%"
 	else if {_name} is "뱀파이어":
@@ -63,13 +69,14 @@ function pickAbility(name: text):
 			wait 3 seconds
 
 	wait {@지속시간} seconds
-	set {능력::%{_name}%} to false
-	if {_name} is "점프강화":
-		execute console command "/scale set pehkui:jump_height 1 %{플레이어}%"
-	else if {_name} is "속도강화":
-		execute console command "/scale set pehkui:motion 1 %{플레이어}%"
+
+	if {능력::%{_name}%} is {_능력펄스}:
+		if {_name} is "점프강화":
+			execute console command "/scale set pehkui:jump_height 1 %{플레이어}%"
+		else if {_name} is "속도강화":
+			execute console command "/scale set pehkui:motion 1 %{플레이어}%"
 	
-	broadcast "&5[다이아룰렛] &f랜덤능력부여 : %{_name}%"
+
 			
 function setAbilityList():
 	set {랜덤능력리스트::점프강화} to true

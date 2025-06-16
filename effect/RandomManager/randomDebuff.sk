@@ -35,7 +35,7 @@ command /디버프 [<text>] [<text>]:
 		else if arg-1 is "초기화":
 			message "&5[다이아룰렛] &f디버프리스트 초기화 완료"
 			delete {디버프리스트::*}
-            setDebuffList()
+			setDebuffList()
 		else:
 			message "&c[다이아룰렛] &c/디버프 (랜덤/부여/수정) (값)"
 
@@ -58,7 +58,7 @@ function pickDebuff(name: text):
 		apply levitation 1 to {플레이어} for 30 seconds
 	else if {_name} is "어둠":
 		apply darkness 1 to {플레이어} for 30 seconds
-	broadcast "&5[다이아룰렛] &f랜덤디버프부여 : %{_name}%"
+
 
 
 

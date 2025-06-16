@@ -20,7 +20,7 @@ GeckoLib - 1.20.0 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 # 💾 파일경로
 치즈 연동 : .\plugins\chzzk\config.yml<br/>
 투네 연동 : .\plugins\MCToon\config.yml<br/>
-룰렛 설정 : .plugins\Skript\scripts\mc_diamond_roullette\roullete\config_roullete.sk<br/>
+룰렛 설정 : .\plugins\Skript\scripts\mc_diamond_roullette\roullete\config_roullete.sk<br/>
 
 # 📝 명령어
 /다이아룰렛 : 스코어보드 시작, 유저 데이터(다이아 갯수, 진행시간) 초기화 <br/>
@@ -87,7 +87,7 @@ GeckoLib - 1.20.0 - https://www.curseforge.com/minecraft/mc-mods/citadel<br/>
 /크기조정 <크기> : default 1 / 플레이어 크기 조정<br/>
 /랜덤텔포 : 플레이어 주변으로 랜덤 텔포<br/>
 /tnt소환 <숫자>: 플레이어 위치에 점화된 tnt <숫자> 소환<br/>
-/용수철 <숫자>: 플레이어 <숫자> 만큼 점프 1~10 
+/용수철 <숫자>: 플레이어 <숫자> 만큼 점프 1~10 <br/>
 /거미줄설치 : 플레이어 위치 거미줄 설치<br/>
 
 /룰렛 : 룰렛 돌리기 <br/>

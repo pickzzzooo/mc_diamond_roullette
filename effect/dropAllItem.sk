@@ -3,10 +3,10 @@ command /다버리기:
 	trigger:
 		set {드랍펄스} to true
 		loop all items in {플레이어}'s inventory:
-			if loop-item is not {만렙곡괭이}:
+			if loop-item is not diamond pickaxe:
 				drop loop-item at location of {플레이어}
 		clear inventory of {플레이어}
-		give {만렙곡괭이} to player
+		execute console command "/give %{플레이어}% minecraft:diamond_pickaxe{display:{Name:'{""text"":""다이아곡괭이"",""color"":""blue""}'},Enchantments:[{id:""minecraft:efficiency"",lvl:5}],Unbreakable:1b} 1"
 		wait 1 second
 		set {드랍펄스} to false
 

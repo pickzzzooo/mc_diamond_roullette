@@ -1,5 +1,5 @@
 options:
-	지속시간: 60
+	지속시간: 30
 
 on break:
 	if {능력::짜장짜장열매} is true:
